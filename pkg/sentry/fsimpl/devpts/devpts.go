@@ -142,6 +142,11 @@ func (fs *filesystem) MountOptions() string {
 	return ""
 }
 
+// ShouldAllowVerityMmap implements vfs.FilesystemImpl.ShouldAllowVerityMmap.
+func (fs *filesystem) ShouldAllowVerityMmap() bool {
+	return false
+}
+
 // rootInode is the root directory inode for the devpts mounts.
 //
 // +stateify savable

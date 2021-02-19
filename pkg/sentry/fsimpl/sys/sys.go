@@ -148,6 +148,11 @@ func (fs *filesystem) MountOptions() string {
 	return fmt.Sprintf("dentry_cache_limit=%d", fs.MaxCachedDentries)
 }
 
+// ShouldAllowVerityMmap implements vfs.FilesystemImpl.ShouldAllowVerityMmap.
+func (fs *filesystem) ShouldAllowVerityMmap() bool {
+	return false
+}
+
 // dir implements kernfs.Inode.
 //
 // +stateify savable

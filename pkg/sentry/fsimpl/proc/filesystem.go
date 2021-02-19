@@ -109,6 +109,11 @@ func (fs *filesystem) MountOptions() string {
 	return fmt.Sprintf("dentry_cache_limit=%d", fs.MaxCachedDentries)
 }
 
+// ShouldAllowVerityMmap implements vfs.FilesystemImpl.ShouldAllowVerityMmap.
+func (fs *filesystem) ShouldAllowVerityMmap() bool {
+	return false
+}
+
 // dynamicInode is an overfitted interface for common Inodes with
 // dynamicByteSource types used in procfs.
 //

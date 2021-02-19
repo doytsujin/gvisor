@@ -85,6 +85,11 @@ func (fs *filesystem) MountOptions() string {
 	return ""
 }
 
+// ShouldAllowVerityMmap implements vfs.FilesystemImpl.ShouldAllowVerityMmap.
+func (fs *filesystem) ShouldAllowVerityMmap() bool {
+	return false
+}
+
 // inode implements kernfs.Inode.
 //
 // +stateify savable
