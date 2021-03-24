@@ -33,9 +33,6 @@ import (
 	"gvisor.dev/gvisor/pkg/usermem"
 )
 
-// minListenBacklog is the minimum reasonable backlog for listening sockets.
-const minListenBacklog = 8
-
 // maxListenBacklog is the maximum allowed backlog for listening sockets.
 const maxListenBacklog = 1024
 
@@ -384,10 +381,6 @@ func Listen(t *kernel.Task, args arch.SyscallArguments) (uintptr, *kernel.Syscal
 		return 0, nil, syserror.ENOTSOCK
 	}
 
-	// Per Linux, the backlog is silently capped to reasonable values.
-	if backlog <= 0 {
-		backlog = minListenBacklog
-	}
 	if backlog > maxListenBacklog {
 		backlog = maxListenBacklog
 	}
